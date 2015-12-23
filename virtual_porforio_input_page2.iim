@@ -1,0 +1,22 @@
+﻿'-----------------------------------How to use------------------------------------
+'ver0
+'100株購入を自動入力
+'今日の日付を"mm/dd"の形式で入力を自動入力
+'[next to do]
+'引け値を自動入力
+'-----------------------------------Template------------------------------------
+VERSION BUILD=8940826 RECORDER=FX
+SET !REPLAYSPEED FAST
+'SET !LOOP 41
+SET !EXTRACT_TEST_POPUP NO
+SET !ERRORIGNORE YES
+SET !TIMEOUT_STEP 0
+'-----------------------------------Run------------------------------------
+'100, Downloadの引け値, 今日の日付を入力
+VERSION BUILD=8940826 RECORDER=FX
+'URL GOTO=http://info.finance.yahoo.co.jp/portfolio/edit/?.done=http%3A%2F%2Finfo.finance.yahoo.co.jp%2Fportfolio%2Fdisplay%2F%3Fportfolio_id%3Dpf_1%26view_id%3Dd1
+TAG POS={{!LOOP}} TYPE=INPUT:TEXT FORM=ID:editPortfolioForm ATTR=NAME:retention CONTENT=100
+'SET !VAR0 DATASOURCE
+'TAG POS=1 TYPE=INPUT:TEXT FORM=ID:editPortfolioForm ATTR=NAME:purchasePrice CONTENT={{!VAR0}}
+SET !VAR1 {{!NOW:mm/dd}}
+TAG POS={{!LOOP}} TYPE=INPUT:TEXT FORM=ID:editPortfolioForm ATTR=ID:comment CONTENT=BUY{{!VAR1}}

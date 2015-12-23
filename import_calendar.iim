@@ -1,0 +1,38 @@
+﻿'googleカレンダーに経済カレンダーを自動登録してくれるマクロ
+'経済指標カレンダーの落ちているページに飛んで
+'通常のDLフォルダ(iMacrosのsettingでいじれる)にデフォルトネームでDLして
+'あらかじめ作っておいたgoogleカレンダーに登録してくれる
+'-----------------------------------Template------------------------------------
+VERSION BUILD=8940826 RECORDER=FX
+SET !REPLAYSPEED FAST
+SET !EXTRACT_TEST_POPUP NO
+SET !ERRORIGNORE YES
+SET !TIMEOUT_STEP 0
+'-----------------------------------Download Calendar------------------------------------
+URL GOTO=http://fx-calendar.appspot.com/about
+ONDOWNLOAD FOLDER=* FILE=* WAIT=YES
+TAG POS=1 TYPE=A ATTR=TXT:http://fx-calendar.appspot.com/high.ics
+ONDOWNLOAD FOLDER=* FILE=* WAIT=YES
+TAG POS=1 TYPE=A ATTR=TXT:http://fx-calendar.appspot.com/mid.ics
+ONDOWNLOAD FOLDER=* FILE=* WAIT=YES
+TAG POS=1 TYPE=A ATTR=TXT:http://fx-calendar.appspot.com/low.ics
+'-----------------------------------Import Calendar------------------------------------
+URL GOTO=https://calendar.google.com/calendar/render#settings-calendars_9
+''-----------------------------------high------------------------------------
+TAG POS=1 TYPE=A ATTR=TXT:カレンダーをインポート
+TAG POS=1 TYPE=SELECT FORM=ACTION:upload_event ATTR=NAME:src CONTENT=%YWdraGZ2YmFidm9vcG5tazJkb2RrbHMwMjBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+TAG POS=1 TYPE=INPUT:FILE FORM=ACTION:upload_event ATTR=NAME:filename CONTENT=E:\Users\U1and0\Dropbox\Program\iMacros\Downloads\high.ics
+TAG POS=1 TYPE=BUTTON FORM=ACTION:upload_event ATTR=NAME:import
+TAG POS=1 TYPE=DIV ATTR=TXT:カレンダーをインポート
+''-----------------------------------mid------------------------------------
+TAG POS=1 TYPE=A ATTR=TXT:カレンダーをインポート
+TAG POS=1 TYPE=SELECT FORM=ACTION:upload_event ATTR=NAME:src CONTENT=%ZXZ2b2V0ODFsbmk1MjRnZHBucGV2cjlmM2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+TAG POS=1 TYPE=INPUT:FILE FORM=ACTION:upload_event ATTR=NAME:filename CONTENT=E:\Users\U1and0\Dropbox\Program\iMacros\Downloads\mid.ics
+TAG POS=1 TYPE=BUTTON FORM=ACTION:upload_event ATTR=NAME:import
+TAG POS=1 TYPE=DIV ATTR=TXT:カレンダーをインポート
+''-----------------------------------low------------------------------------
+TAG POS=1 TYPE=A ATTR=TXT:カレンダーをインポート
+TAG POS=1 TYPE=SELECT FORM=ACTION:upload_event ATTR=NAME:src CONTENT=%cmNwb2lqbW1rOXJqZDNhc2I3aWo4bHRtOGdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+TAG POS=1 TYPE=INPUT:FILE FORM=ACTION:upload_event ATTR=NAME:filename CONTENT=E:\Users\U1and0\Dropbox\Program\iMacros\Downloads\low.ics
+TAG POS=1 TYPE=BUTTON FORM=ACTION:upload_event ATTR=NAME:import
+TAG POS=1 TYPE=DIV ATTR=TXT:カレンダーをインポート

@@ -1,0 +1,53 @@
+﻿'-----------------------------------Version------------------------------------
+'ver1.2
+'ループ使用に改造
+'詳細はHOw to use参照
+
+'ver1.1
+'スクリーニング後の銘柄を全て新しいタブで開いた後に実行するマクロ
+'銘柄の"財務"をクリックし"株価コード"=VAR0へ格納、"最低購入金額"、"自己資本"、'利益余剰金、"有利子負債"をクリップボードにコピーする
+'みんかぶサイトにVAR0の値を入れてジャンプ
+
+'[next to do]
+'法人名抜き出し
+'そのリンクからページ開き
+'javascript使う？
+'screening.iimからzaimu.iimのループへのシームレスな実行
+'-----------------------------------How to use?------------------------------------
+'screening.iimを実行後
+'今日のスクリーニング株のページを新しいタブに読み込んだ後に実行
+'iMacros インターフェースのMAX値を開いた"タブの数+1"にセットすること！
+'iMacrosのPlay(Loop)を押すと、
+'銘柄の"財務"をクリックし"株価コード"=VAR0へ格納、"最低購入金額"、"自己資本"、'利益余剰金、"有利子負債"をクリップボードにコピーして
+'みんかぶサイトにVAR0の値を入れてジャンプする
+'-----------------------------------START------------------------------------
+VERSION BUILD=8940826 RECORDER=FX
+SET !REPLAYSPEED FAST
+SET !EXTRACT_TEST_POPUP NO
+SET !ERRORIGNORE YES
+SET !TIMEOUT_STEP 0
+'-----------------------------------RUN------------------------------------
+SET !LOOP 2
+SET !VAR1 {{!LOOP}}
+TAB T={{!VAR1}}
+TAG POS=1 TYPE=A ATTR=TXT:財務
+
+'銘柄コード
+TAG POS=1 TYPE=TD ATTR=CLASS:basic_value EXTRACT=TXT
+'銘柄コードをVAR0として格納(あとでみんかぶサイトひらくため)
+SET !VAR0 {{!EXTRACT}}
+'最低購入代金
+TAG POS=15 TYPE=TD ATTR=CLASS:basic_value EXTRACT=TXT
+'自己資本
+TAG POS=4 TYPE=TD ATTR=CLASS:cell_value EXTRACT=TXT
+'利益余剰金
+TAG POS=16 TYPE=TD ATTR=CLASS:cell_value EXTRACT=TXT
+'有利子負債
+TAG POS=19 TYPE=TD ATTR=CLASS:cell_value EXTRACT=TXT
+
+'CSVへ抽出
+SAVEAS TYPE=EXTRACT FOLDER=* FILE={{!NOW:yymmdd}}.csv
+
+'ループ数+1番目のタブを開いて、みんかぶの銘柄ページを開く
+TAB T={{!VAR1}}
+URL GOTO=http://minkabu.jp/stock/{{!VAR0}}?q={{!VAR0}}

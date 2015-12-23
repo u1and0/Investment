@@ -1,0 +1,25 @@
+﻿'-----------------------------------Virsion------------------------------------
+'ver0
+'-----------------------------------How to use------------------------------------
+'今日の日付のポートフォリオを作成
+'銘柄一括登録のページまで行ってくれる
+'[next to do]
+'virtual_portfolio_input_page2をforでまわしてもらう。
+'-----------------------------------Template------------------------------------
+VERSION BUILD=8940826 RECORDER=FX
+SET !REPLAYSPEED FAST
+SET !EXTRACT_TEST_POPUP NO
+SET !ERRORIGNORE YES
+SET !TIMEOUT_STEP 0
+'-----------------------------------Run------------------------------------
+VERSION BUILD=8940826 RECORDER=FX
+URL GOTO=http://info.finance.yahoo.co.jp/portfolio/edit/?.done=http%3A%2F%2Finfo.finance.yahoo.co.jp%2Fportfolio%2Fdisplay%2F%3Fportfolio_id%3Dpf_1%26view_id%3Dd1
+'-----------------------------------page1------------------------------------
+
+SET !VAR1 {{!NOW:mm/dd}}
+TAG POS=1 TYPE=INPUT:TEXT FORM=ID:editPortfolioForm ATTR=ID:pfEditNameInput CONTENT={{!VAR1}}
+TAG POS=1 TYPE=BUTTON FORM=ID:editPortfolioForm ATTR=TXT:次へ
+
+'-----------------------------------page2------------------------------------
+
+TAG POS=1 TYPE=A ATTR=TXT:銘柄を一括登録
