@@ -1,10 +1,53 @@
-﻿VERSION BUILD=8940826 RECORDER=FX
+﻿'___________________________________________________
+'volatiliry.iim ver2.0
+'<<SELF-INTRODUCTION>>
+'+ Jump to volatiliry site
+'	>>>http://www.myfxbook.com/forex-market/volatility
+'+ Sort daily volatility for arbitary currency
+'<<UPDATE2.0>>
+'+ Jump to HEAD SITE.(You can select currency there.)
+'+ Check currency only for existing in my account.
+'+ (^-----If you don't want to use this function, you should set single quote meaning COMMENT-OUT at the head of row between 17 and 47.)
+'___________________________________________________
+VERSION BUILD=8940826 RECORDER=FX
 SET !REPLAYSPEED FAST
 SET !EXTRACT_TEST_POPUP NO
 SET !ERRORIGNORE YES
 SET !TIMEOUT_STEP 0
-TAB T=1
-URL GOTO=http://autofx-now.com/forex-tools/volatility.html
-FRAME F=1
+'_________________________RUN__________________________
+URL GOTO=http://www.myfxbook.com/forex-market/volatility
+'OPEN SETTING
+TAG POS=2 TYPE=DIV ATTR=TXT:More
+'RESET
+TAG POS=1 TYPE=A ATTR=TXT:Show<SP>all
+TAG POS=1 TYPE=A ATTR=TXT:Hide<SP>all
+'SETUP
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel9
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol9 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel11
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol11 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel12
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol12 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel46
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol46 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel14
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol14 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel7
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol7 CONTENT=YES
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol1 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel25
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol25 CONTENT=YES
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol4 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel2
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol2 CONTENT=YES
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol27 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel29
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol29 CONTENT=YES
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol3 CONTENT=YES
+	TAG POS=1 TYPE=LABEL ATTR=ID:marketSymbolLabel1893
+	TAG POS=1 TYPE=INPUT:CHECKBOX ATTR=ID:marketSymbol1893 CONTENT=YES
+'CLOSE SETTING
+TAG POS=2 TYPE=DIV ATTR=TXT:More
+'SORT
 TAG POS=1 TYPE=A ATTR=TXT:Daily
 TAG POS=1 TYPE=A ATTR=TXT:Daily
