@@ -14,12 +14,13 @@ iMacrosで動作する.iimファイル郡
 
 (6)virtual_porforio_input_page2.iim---100株を今日の日にちで買ったことにする入力を行う。ループ処理可能。
 
+(7)getcsvvola.vb---volatility.iimで取得したcsvをexcelにコピペ
 
 
 
 <<改造予定>>
 
-(1)volatility.iim  
+(1)volatility.iim
 - txtだかcsvだかに定期的に保存していく。
 - ソートはExcel上で行うか。値を取得するには順番どおりとは行かないようだ。
 - あるいはソートはperlで・・・しかし面倒くさい
