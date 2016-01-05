@@ -1,9 +1,11 @@
 ﻿'___________________________________________________
-'volatiliry.iim ver3.0
+'volatiliry.iim ver3.1
 '<<SELF-INTRODUCTION>>
 '+ Jump to volatiliry site
 '	>>>http://www.myfxbook.com/forex-market/volatility
 '+ Sort daily volatility for arbitary currency
+'<<UPDATE3.1>>
+'Infinit Loop in last row(If you DO NOT want to loop, comment out it.)
 '<<UPDATE3.0>>
 '+ Extract to csv
 '<<UPDATE2.0>>

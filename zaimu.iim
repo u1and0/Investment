@@ -1,4 +1,7 @@
-﻿'-----------------------------------Version------------------------------------
+﻿'-----------------------------------------------------------------------
+'ver1.3
+'みんかぶサイトの「買い/売り」「割安/割高」のtextを自動取得できるようにした
+
 'ver1.2
 'ループ使用に改造
 '詳細はHOw to use参照
@@ -45,9 +48,12 @@ TAG POS=16 TYPE=TD ATTR=CLASS:cell_value EXTRACT=TXT
 '有利子負債
 TAG POS=19 TYPE=TD ATTR=CLASS:cell_value EXTRACT=TXT
 
-'CSVへ抽出
-SAVEAS TYPE=EXTRACT FOLDER=* FILE={{!NOW:yymmdd}}.csv
 
 'ループ数+1番目のタブを開いて、みんかぶの銘柄ページを開く
 TAB T={{!VAR1}}
 URL GOTO=http://minkabu.jp/stock/{{!VAR0}}?q={{!VAR0}}
+TAG POS=1 TYPE=DIV ATTR=CLASS:md_ico_tx* EXTRACT=TXT
+TAG POS=2 TYPE=DIV ATTR=CLASS:md_ico_tx* EXTRACT=TXT
+
+'CSVへ抽出
+SAVEAS TYPE=EXTRACT FOLDER=* FILE={{!NOW:yymmdd}}.csv
